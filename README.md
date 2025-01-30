@@ -1,1 +1,1 @@
-# git_game
+Piedra, papel y tijeras!

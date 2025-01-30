@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery.js"></script>
+</head>
+<body>
+
+<h1>Piedra, papel y pokémon!</h1>
+<div class="mini">Aclaración: Estaremos haciendo <strike>trampa</strike> usando jquery</div>
+<h2>Choose your fav!</h1>
+<div class="bichos">
+	<div id="piedra" class="pkmn">
+		<img src="https://img.pokemondb.net/sprites/black-white/shiny/golem.png">
+		<p>Piedra</p>
+	</div>
+	<div id="papel" class="pkmn">
+		<img src="https://img.pokemondb.net/sprites/black-white/normal/minccino.png">
+		<p>Papel</p>
+	</div>
+	<div id="tijeras" class="pkmn">
+		<img src="https://img.pokemondb.net/sprites/black-white/normal/scizor.png">
+		<p>Tijeras</p>
+	</div>
+</div>
+</body>
+</html>
+
+<script>
+let azar = ["Piedra","Papel","Tijeras"];
+
+function getComputerChoice() {
+	let max = 2;
+	let min = 0;
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+let human = 99
+let humanScore = 0;
+let computadoraScore = 0;
+
+function playGround() {
+	let computadora = getComputerChoice();
+	let mensaje = azar[human]+" Vs "+azar[computadora];
+	
+	if (human == computadora) {
+		alert(mensaje + " = ¡EMPATE!")
+	} else if ((human == 0 && computadora == 2) || (human == 1 && computadora == 0) || (human == 2 && computadora == 1)) {
+		alert(mensaje + " = ¡GANASTE!")
+		humanScore++;
+	} else {
+		alert(mensaje + " = ¡PERDISTE!")
+		computadoraScore++;
+	}
+	
+	console.log("Contador humano: "+humanScore+" — "+ "Contador computadora: "+computadoraScore);
+	human = 99;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('piedra').addEventListener('click', function() {
+		human = 0;
+		//console.log("Elegiste piedra!");
+		playGround();
+	});
+	document.getElementById('papel').addEventListener('click', function() {
+		human = 1;
+		//console.log("Elegiste papel!");
+		playGround();
+	});
+	document.getElementById('tijeras').addEventListener('click', function() {
+		human = 2;
+		//console.log("Elegiste tijeras!");
+		playGround();
+	});	
+});
+
+</script>
