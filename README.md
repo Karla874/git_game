@@ -1,1 +1,1 @@
-Piedra, papel y tijeras!
+Piedra, papel y tijeras... versión Pokémon!
